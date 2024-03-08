@@ -19,13 +19,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // insert team score into the database
-// app.post('/scores', (req, res) => {
-//     console.log(req.body);
-//     res.setHeader("Access-Control-Allow-Origin", "*");
-//     res.status(200).json({
-//         state: "success"
-//     });
-    // insert into database
+app.post('/scores', (req, res) => {
+    console.log(req.body);
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    //insert into database
     const insertQuery = 'INSERT INTO stp.machathon_scores (team_code, first_laptime, second_laptime, zip_file, created_at) VALUES ($1, $2, $3, $4, NOW());';
     const {team_code, first_laptime, second_laptime, solution_file} = req.body;
     //
